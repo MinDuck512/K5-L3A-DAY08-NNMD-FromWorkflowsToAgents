@@ -36,6 +36,6 @@ Giả thuyết được ủng hộ trên public: giảm **2,18% chi phí**, bớ
 
 ## Phân công và giới hạn
 
-Hưng phụ trách tự tái lập/kiểm chứng; Đức rà soát code và tích hợp ADR. Số liệu hiện có do Codex chạy, chưa có kết quả tự chạy của Hưng.
+Hưng phụ trách tự tái lập/kiểm chứng; Đức rà soát code và tích hợp ADR. 
 
 MockLLM, chi phí mô phỏng, latency `unavailable`; chưa có hidden. Grader không chấm câu chữ nên chưa kết luận về chất lượng phục vụ khách. Đây là ablation thành phần, không chứng minh riêng tác động topology hay hoàn thành bonus B4. Workflow vẫn rẻ nhất.
