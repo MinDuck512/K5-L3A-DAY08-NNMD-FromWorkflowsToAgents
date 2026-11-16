@@ -2,7 +2,7 @@
 
 ## 1. Thông tin nhóm
 
-- Nhóm NNMD — L3A: Nguyễn Ngọc Minh Đức (`2A202603421`) và Dương Tuấn Hưng (`03416`).
+- Nhóm NNMD — L3A: Nguyễn Ngọc Minh Đức (`2A202603421`) và Dương Tuấn Hưng (`2A202603416`).
 - Commit code/bằng chứng: `4d04f12e3b7b425861c4968d61475ee5a36a744f`, trùng ADR.
 
 ## 2. Mục tiêu và cách tiếp cận
@@ -58,9 +58,9 @@ python -m lab8.benchmark --shapes workflow,single,orchestrator,swarm --cases dat
 | Thành viên | Phụ trách | Trạng thái |
 | --- | --- | --- |
 | Minh Đức | Workflow, Single, tích hợp/môi trường/Git và ADR | Commit bản chung `4d04f12` với hỗ trợ Codex; đã tự xác nhận 92 test mặc định pass |
-| Tuấn Hưng | Orchestrator/handoff, kiểm chứng an toàn, benchmark/ablation và kết quả | Chờ tự kiểm chứng, bổ sung commit/test và báo cáo cá nhân |
+| Tuấn Hưng | Orchestrator/handoff, kiểm chứng an toàn, benchmark/ablation và kết quả | Commit `2748ba6` bổ sung 10 test trong `test_orchestrator_and_safety_hung.py`; tự xác nhận 102 test mặc định, 248 test student, crash 20/20 |
 
-Benchmark, ablation và student hiện do Codex chạy. Chi tiết đóng góp nằm trong [TEAM.md](../../TEAM.md). Hưng sẽ tự tạo báo cáo và tự commit sau.
+Chi tiết đóng góp nằm trong [TEAM.md](../../TEAM.md), báo cáo của Đức và [Hưng](2A202603416_DuongTuanHung.md). Cả hai thành viên đều có commit kỹ thuật độc lập và tự nộp link repo trên LMS.
 
 ## 7. Hạn chế và hướng cải thiện
 
