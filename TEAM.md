@@ -24,7 +24,4 @@ Hai người kiểm tra chéo và cùng rà soát báo cáo nhóm. Mỗi ngườ
 
 Các test nằm trong `src/tests/`. Bản tích hợp hiện có do Đức commit với hỗ trợ Codex. Hưng chưa có commit hoặc kết quả tự chạy được xác nhận.
 
-## Báo cáo cá nhân
 
-- Đức: [2A202603421_NguyenNgocMinhDuc.md](report/team/2A202603421_NguyenNgocMinhDuc.md).
-- Hưng tự tạo `report/team/03416_DuongTuanHung.md` từ mẫu và tự commit sau; hiện chưa tạo file.
