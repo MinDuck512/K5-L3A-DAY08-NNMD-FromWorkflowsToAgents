@@ -1,38 +1,29 @@
 # Decision record
 
-Điền sau dấu `:` trên cùng dòng, không xóa nhãn. Giảng viên và `python -m lab8.check_submission` (chạy trong `src/`) đọc các dòng này bằng máy. Không đổi tên hay dời file này khỏi `report/team/`.
-`Shape chọn` phải là đúng một trong: `workflow`, `single`, `orchestrator`, `swarm`. Đây là shape được chấm cổng hidden.
-
 - Shape chọn: workflow
 - Commit hash: 4d04f12e3b7b425861c4968d61475ee5a36a744f
-- Run id dẫn chứng: R-workflow-C-001-s11, R-workflow-C-014-s55; toàn bộ 70 trial workflow trong src/reports/benchmark.json (14 claim, seed 11,22,33,44,55)
-- Pass rate / pass^5 / seed min-max / variance: 1.0 / 1.0 / 1.0–1.0 / 0.0 trên bộ public
-- Cost per success (mô phỏng, VND): 27.857142857142858 (xấp xỉ 27,86 VND)
-- Crash safety: 20/20 (src/reports/crash.json); crash suite kiểm host và swarm, T12 và test bổ sung kiểm crash/resume của workflow
-- Secret leak / approval bypass: Không ghi nhận vi phạm trong 70/70 trial public của workflow và các test ranh giới đã chạy; chưa có số đếm chính thức từ grader hidden
+- Run id dẫn chứng: R-workflow-C-001-s11, R-workflow-C-014-s55; đủ 70 trial trong src/reports/benchmark.json
+- Pass rate / pass^5 / seed min-max / variance: 1.0 / 1.0 / 1.0–1.0 / 0.0 trên public
+- Cost per success (mô phỏng, VND): 27.857142857142858 (xấp xỉ 27,86đ)
+- Crash safety: 20/20 trong src/reports/crash.json; T12 và test bổ sung kiểm crash của Workflow
+- Secret leak / approval bypass: Không ghi nhận trong các trial public và test đã chạy; chưa có số đếm chính thức từ hidden
 
-Hash trên trỏ tới commit chứa code, test và bằng chứng đã chạy. Commit tài liệu kế tiếp ghi lại hash này trong ADR và các báo cáo, tránh tự tham chiếu hash của chính file đang được commit.
+Hash trên là bản code/test/bằng chứng; các commit tài liệu ghi lại hash này.
 
-## Phân công rà soát trong nhóm 2 người
+## Vì sao chọn Workflow
 
-- Nguyễn Ngọc Minh Đức: phụ trách tích hợp, tổng hợp quyết định và kiểm tra luồng Workflow/Single cùng ranh giới code/model.
-- Dương Tuấn Hưng: phụ trách kiểm chứng Orchestrator/handoff, crash safety, benchmark/ablation và đối chiếu chi phí, độ dao động, giới hạn phép đo.
-- Hai người cùng rà soát điều kiện làm thay đổi quyết định. Các số liệu hiện có thuộc bản tích hợp do Đức commit với hỗ trợ Codex; chưa có xác nhận kiểm chứng riêng của Hưng. Cập nhật ADR nếu commit kỹ thuật sau này làm thay đổi code hoặc kết quả.
+Trên cùng 14 claim × 5 seed, Workflow, Single và Orchestrator đều đúng 70/70. Workflow rẻ nhất: 27,86đ/thành công, so với Single 33,37đ và Orchestrator 50,71đ. Swarm đúng 69/70, chi phí 49,57đ. Luật hiện tại tính được bằng code nên chưa cần thêm mức tự chủ.
 
-## Vì sao shape này
+## Khi nào đổi lựa chọn
 
-Trên cùng 14 claim public × 5 seed, workflow, single và orchestrator đều đạt 70/70 trial, pass^5 = 1 và variance = 0. Workflow có cost/success thấp nhất: 27,86 VND so với single 33,37 và orchestrator 50,71. Swarm đạt 69/70, pass^5 = 13/14, cost/success 49,57 VND. Bài toán hiện có dữ kiện có cấu trúc và luật tính tiền xác định; workflow giải quyết được với 0 model call. Vì vậy chọn kiến trúc ít tự chủ nhất vẫn hoàn thành task. Đây là lựa chọn dựa trên public, chưa xác nhận gate hidden ≥ 0.75.
-
-## Có đáng đổi lấy multi-agent không
-
-Trong triển khai hiện tại, single và orchestrator chưa tăng độ đúng trên public, trong khi chi phí mô phỏng cao hơn. Chưa có bằng chứng để đổi sang multi-agent. Quyết định có thể đổi nếu có dữ liệu phi cấu trúc cần model thật, các công việc độc lập có lợi khi giao song song, hoặc bộ case mới cho thấy độ đúng tăng đủ để bù chi phí và độ phức tạp. Khi đó phải đo lại trên cùng điều kiện và vẫn giữ các gate an toàn.
-
-Ablation R3 trong `src/reports/bonus_ablation.json` giữ nguyên độ đúng của Orchestrator khi tắt draft và giảm cost/success từ 50,712857 xuống 49,607143 VND mô phỏng (2,18%). Bản đã giảm vẫn cao hơn workflow 27,857143 VND, nên không đổi lựa chọn. Thí nghiệm chỉ đo ảnh hưởng một lượt draft, không chứng minh mọi overhead đều đến từ topology.
+Đo lại nếu task cần model thật xử lý dữ liệu phi cấu trúc hoặc có nhiều việc độc lập để phân công. Chỉ đổi khi lợi ích đủ bù chi phí và vẫn an toàn. Ablation tắt draft giảm cost Orchestrator còn 49,61đ, vẫn cao hơn Workflow.
 
 ## Trace và bằng chứng
 
-Workflow ghi `claim_lookup`, `order_lookup` đã lọc, `quote`, `refund_requested`, `refund_result` và `decision`. Không ghi ticket, principal context thô, `parent_secret`, header, SĐT, địa chỉ, internal note hoặc tên hàng. Trace nằm tại `src/traces/<run_id>.json`; không có debug dump riêng ngoài thư mục scanner. Mọi nhánh trả về dùng `finish()` để ghi trace mới và lấy effect/audit từ ledger. Bộ student và test bổ sung kiểm format trace, injection và crash; không suy rộng kết quả public thành bảo đảm cho mọi dữ liệu.
+Trace ghi tra cứu, quote, yêu cầu/kết quả refund và quyết định. Không ghi ticket, secret, header, SĐT, địa chỉ, ghi chú nội bộ hoặc tên hàng. `finish()` ghi trace mới tại `src/traces/<run_id>.json` và lấy effect/audit từ ledger.
 
-## Giới hạn
+## Phân công và giới hạn
 
-MockLLM không phải model sản xuất; single dùng adapter chọn action bằng code, orchestrator dùng kế hoạch tool đọc cố định. Giá là mô phỏng, latency là `unavailable`. `steps` đếm event trace, phụ thuộc mức chi tiết ghi log; swarm ghi ít event hơn nên không thể kết luận nó nhanh hơn. Các shape có prompt và số lượt gọi khác nhau, do đó chênh lệch cost chưa chứng minh tác động riêng của topology. Public chỉ có 14 claim; `student_drop/` chưa được cung cấp. Số liệu lấy nguyên từ công cụ, không sửa JSON. Research card R3 và ablation đã hoàn thành; phần draft bị tắt không được chấm chất lượng câu chữ.
+Đức tổng hợp ADR; Hưng phụ trách kiểm chứng số liệu, chưa có xác nhận riêng. Kết quả hiện có do Codex chạy trên bản tích hợp của Đức.
+
+MockLLM không phải model thật; chi phí mô phỏng, latency `unavailable`. Steps phụ thuộc cách ghi log. Chưa có hidden; kết luận chỉ áp dụng cho public hiện tại. Ablation không chấm chất lượng câu trả lời khách. Chi tiết: [research card](research_card.md).
