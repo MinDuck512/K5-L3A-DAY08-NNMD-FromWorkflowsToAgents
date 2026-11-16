@@ -2,17 +2,17 @@
 
 ## Thông tin nhóm
 
-- Tên nhóm:
+- Tên nhóm: NNMD
 - Lớp: L3A
-- Repo nhóm: `K5-L3A-DAY08-TenNhom-FromWorkflowsToAgents` (xem [SUBMISSION.md](SUBMISSION.md))
-- URL repo, nhánh nộp, commit chốt:
+- Repo nhóm: `K5-L3A-DAY08-NNMD-FromWorkflowsToAgents` (xem [SUBMISSION.md](SUBMISSION.md))
+- URL repo, nhánh nộp, commit chốt: https://github.com/MinDuck512/K5-L3A-DAY08-NNMD-FromWorkflowsToAgents · nhánh `main` · commit chốt: chưa chốt
 
 ## Thành viên
 
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
-|   1 |        |      |       |        |         |
-|   2 |        |      |       |        |         |
+|   1 | Nguyễn Ngọc Minh Đức | 2A202603421 | Chưa cung cấp | [MinDuck512](https://github.com/MinDuck512) | Thực hiện bài lab, kiểm thử và báo cáo |
+|   2 | Dương Tuấn Hưng | 03416 | Chưa cung cấp | [hunglun2711](https://github.com/hunglun2711) | Thực hiện bài lab, kiểm thử và báo cáo |
 
 Gợi ý chia vai:
 
@@ -25,7 +25,7 @@ Gợi ý chia vai:
 
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
-| | | | |
+| Nguyễn Ngọc Minh Đức | Thực hiện bài lab, kiểm thử và báo cáo | Chưa chốt | `src/tests/test_workflow_edges.py` (10 ca); `src/tests/test_single_edges.py` (10 ca); bổ sung 18 ca Orchestrator/ablation vào `src/tests/test_handoff_secret.py` |
 
 ## Cá nhân
 
