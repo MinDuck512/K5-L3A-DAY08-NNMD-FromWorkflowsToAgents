@@ -20,7 +20,7 @@ Hai người kiểm tra chéo và cùng rà soát báo cáo nhóm. Mỗi ngườ
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
 | Nguyễn Ngọc Minh Đức | Tích hợp bản code chung với hỗ trợ Codex; phụ trách Workflow/Single | `4d04f12` | `test_workflow_edges.py`: 10 ca; `test_single_edges.py`: 10 ca; `test_handoff_secret.py`: thêm 18 ca |
-| Dương Tuấn Hưng | Tiếp nhận Orchestrator/handoff và kiểm chứng kết quả | Chờ Hưng tự commit | Chờ bổ sung test riêng sau khi thực hiện |
+| Dương Tuấn Hưng | Tiếp nhận Orchestrator/handoff và kiểm chứng kết quả | | Chờ bổ sung test riêng sau khi thực hiện |
 
 Các test nằm trong `src/tests/`. Bản tích hợp hiện có do Đức commit với hỗ trợ Codex. Hưng chưa có commit hoặc kết quả tự chạy được xác nhận.
 
