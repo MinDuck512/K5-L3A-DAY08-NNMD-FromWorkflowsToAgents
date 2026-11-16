@@ -11,7 +11,7 @@
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
 | 1 | Nguyễn Ngọc Minh Đức | 2A202603421 | Chưa cung cấp | [MinDuck512](https://github.com/MinDuck512) | Workflow, Single, tích hợp và ADR |
-| 2 | Dương Tuấn Hưng | 03416 | Chưa cung cấp | [hunglun2711](https://github.com/hunglun2711) | Orchestrator/handoff, kiểm chứng an toàn, benchmark và nghiên cứu |
+| 2 | Dương Tuấn Hưng | 2A202603416 | Chưa cung cấp | [hunglun2711](https://github.com/hunglun2711) | Orchestrator/handoff, kiểm chứng an toàn, benchmark và nghiên cứu |
 
 Hai người kiểm tra chéo và cùng rà soát báo cáo nhóm. Mỗi người tự tạo báo cáo cá nhân, commit kỹ thuật có ít nhất một test thêm/sửa và nộp link repo trên LMS.
 
