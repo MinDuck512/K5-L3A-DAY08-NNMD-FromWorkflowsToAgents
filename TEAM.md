@@ -5,7 +5,7 @@
 - Tên nhóm: NNMD
 - Lớp: L3A
 - Repo nhóm: `K5-L3A-DAY08-NNMD-FromWorkflowsToAgents` (xem [SUBMISSION.md](SUBMISSION.md))
-- URL repo, nhánh nộp, commit chốt: https://github.com/MinDuck512/K5-L3A-DAY08-NNMD-FromWorkflowsToAgents · nhánh `main` · commit chốt: chưa chốt
+- URL repo, nhánh nộp, commit chốt: https://github.com/MinDuck512/K5-L3A-DAY08-NNMD-FromWorkflowsToAgents · nhánh `main` · commit code/bằng chứng: `4d04f12e3b7b425861c4968d61475ee5a36a744f`
 
 ## Thành viên
 
@@ -25,7 +25,7 @@ Gợi ý chia vai:
 
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
-| Nguyễn Ngọc Minh Đức | Thực hiện bài lab, kiểm thử và báo cáo | Chưa chốt | `src/tests/test_workflow_edges.py` (10 ca); `src/tests/test_single_edges.py` (10 ca); bổ sung 18 ca Orchestrator/ablation vào `src/tests/test_handoff_secret.py` |
+| Nguyễn Ngọc Minh Đức | Thực hiện bài lab, kiểm thử và báo cáo | `4d04f12` | `src/tests/test_workflow_edges.py` (10 ca); `src/tests/test_single_edges.py` (10 ca); bổ sung 18 ca Orchestrator/ablation vào `src/tests/test_handoff_secret.py` |
 
 ## Cá nhân
 

@@ -6,7 +6,7 @@ Tối đa 5 trang ngoài phụ lục. Số liệu lấy từ file trong `src/rep
 
 - Tên nhóm: NNMD — L3A
 - Thành viên: xem `TEAM.md`
-- Commit chốt (trùng `report/team/decision_adr.md`): chưa chốt; cập nhật sau khi commit code và bằng chứng
+- Commit chốt (trùng `report/team/decision_adr.md`): `4d04f12e3b7b425861c4968d61475ee5a36a744f` (code, test và bằng chứng; cập nhật hash bằng commit tài liệu kế tiếp)
 
 ## 2. Mục tiêu và cách tiếp cận
 
@@ -70,7 +70,7 @@ Chi tiết đóng góp của từng thành viên nằm trong `TEAM.md` (bảng �
 - Cost là giá mô phỏng, latency là `unavailable`. `steps` là số event trace, không phải thời gian chạy; swarm ghi log ít hơn các shape khác nên không dùng số steps thấp để kết luận nhanh hơn.
 - Mỗi shape có prompt và số lượt model/tool khác nhau. Chênh lệch hiện tại phản ánh toàn bộ triển khai, chưa cô lập tác động topology. Public có ít case và hidden chưa được chấm.
 - Có thể đổi lựa chọn nếu task mới cần xử lý dữ liệu phi cấu trúc hoặc có việc độc lập để phân công, và phép đo mới cho thấy lợi ích bù được chi phí mà vẫn qua gate an toàn.
-- Ablation chỉ tắt một thành phần trong Orchestrator, không chứng minh tác động riêng của topology hoặc thay thế đánh giá chất lượng câu trả lời khách. Research card đã điền; commit/hash còn cần chốt. Thành viên đã xác nhận test mặc định; cần tiếp tục tự chạy student và củng cố phần giải thích code trước khi nộp.
+- Ablation chỉ tắt một thành phần trong Orchestrator, không chứng minh tác động riêng của topology hoặc thay thế đánh giá chất lượng câu trả lời khách. Research card và commit code/bằng chứng đã chốt trong ADR. Thành viên đã xác nhận test mặc định; cần tiếp tục tự chạy student và củng cố phần giải thích code trước khi nộp.
 
 ## 8. Tài liệu tham khảo
 

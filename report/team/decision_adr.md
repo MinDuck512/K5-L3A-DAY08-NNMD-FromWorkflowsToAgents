@@ -4,14 +4,14 @@
 `Shape chọn` phải là đúng một trong: `workflow`, `single`, `orchestrator`, `swarm`. Đây là shape được chấm cổng hidden.
 
 - Shape chọn: workflow
-- Commit hash:
+- Commit hash: 4d04f12e3b7b425861c4968d61475ee5a36a744f
 - Run id dẫn chứng: R-workflow-C-001-s11, R-workflow-C-014-s55; toàn bộ 70 trial workflow trong src/reports/benchmark.json (14 claim, seed 11,22,33,44,55)
 - Pass rate / pass^5 / seed min-max / variance: 1.0 / 1.0 / 1.0–1.0 / 0.0 trên bộ public
 - Cost per success (mô phỏng, VND): 27.857142857142858 (xấp xỉ 27,86 VND)
 - Crash safety: 20/20 (src/reports/crash.json); crash suite kiểm host và swarm, T12 và test bổ sung kiểm crash/resume của workflow
 - Secret leak / approval bypass: Không ghi nhận vi phạm trong 70/70 trial public của workflow và các test ranh giới đã chạy; chưa có số đếm chính thức từ grader hidden
 
-Commit hash sẽ được điền sau khi commit code và bằng chứng; hiện chưa chốt bài nộp.
+Hash trên trỏ tới commit chứa code, test và bằng chứng đã chạy. Commit tài liệu kế tiếp ghi lại hash này trong ADR và các báo cáo, tránh tự tham chiếu hash của chính file đang được commit.
 
 ## Vì sao shape này
 

@@ -21,7 +21,7 @@ Dự kiến: chuẩn bị môi trường, triển khai ba shape, kiểm thử, b
 - Đã bổ sung 9 ca Orchestrator trong file có sẵn `src/tests/test_handoff_secret.py`, giữ nguyên các test cũ. Kiểm tra handoff/prompt/trace không mang dữ liệu nhạy cảm, investigator chỉ đọc, approval sai, nhánh thiếu dữ kiện, các điểm crash và conflict khi retry.
 - Đã chạy crash suite và benchmark 4 shape trên toàn bộ public; đã cập nhật kết quả vào `group_report.md` và lựa chọn workflow vào `decision_adr.md`.
 - Đã hoàn thành research card R3 với nguồn AgentArch đã đối chiếu từ ACL Anthology. Thêm biến thể tắt riêng draft ngay trong `orchestrator.py`, dùng chung logic để giữ nguyên các thành phần khác; thêm 9 test cặp/crash vào file test hiện có và chạy ablation bằng benchmark chính thức.
-- Commit kỹ thuật: chưa chốt. Hidden chưa được cung cấp. Thành viên đã tự chạy lại bộ test mặc định và xác nhận 92 passed sau khi xử lý lỗi quyền thư mục tạm pytest.
+- Commit kỹ thuật: `4d04f12e3b7b425861c4968d61475ee5a36a744f`, chứa code, test và bằng chứng. Hidden chưa được cung cấp. Thành viên đã tự chạy lại bộ test mặc định và xác nhận 92 passed sau khi xử lý lỗi quyền thư mục tạm pytest.
 
 ## 4. Bằng chứng
 
@@ -96,7 +96,9 @@ Bằng chứng tự kiểm tra của thành viên:
 - Sau hướng dẫn của Codex, thành viên tự chạy `.\.venv\Scripts\python.exe -m pytest -q --basetemp=.venv/pytest-local` trong `src/` và cung cấp kết quả `92 passed, 248 deselected in 2.24s`.
 - Cách xử lý chỉ đổi nơi chứa dữ liệu tạm của pytest trong `.venv/`, không sửa bài test hoặc code nghiệp vụ để bỏ qua lỗi.
 
-Kiểm tra định dạng sau research card bằng `.\.venv\Scripts\python.exe -m lab8.check_submission`: research card, ba shape và các report bắt buộc đều OK; còn `1 FAIL` vì commit hash trống và `1 WARN` vì chưa commit thay đổi.
+Kiểm tra định dạng sau research card bằng `.\.venv\Scripts\python.exe -m lab8.check_submission`: research card, ba shape và các report bắt buộc đều OK; tại thời điểm đó còn `1 FAIL` vì commit hash trống và `1 WARN` vì chưa commit thay đổi.
+
+Chốt code/test/bằng chứng tại commit `4d04f12e3b7b425861c4968d61475ee5a36a744f`. ADR, TEAM và báo cáo nhóm đã được cập nhật cùng hash bằng commit tài liệu kế tiếp; không dùng hash starter `034c6c4` làm hash bài làm.
 
 ## 5. Công cụ AI đã dùng
 
