@@ -9,9 +9,17 @@
 
 ## 2. Phần việc phụ trách
 
-Dự kiến: chuẩn bị môi trường, triển khai ba shape, kiểm thử, benchmark và báo cáo bài lab.
+Theo phân công nhóm 2 người, tôi phụ trách:
+
+- Workflow và Single: rà soát luồng xử lý, vòng ReAct, quote bằng code, ranh giới model/tool và test nghiệp vụ tương ứng.
+- Tích hợp: môi trường Python, Git, xử lý lỗi Windows, giữ các shape cùng contract và kiểm tra bài nộp.
+- Báo cáo: giải pháp Workflow/Single, tổng hợp ADR, đối chiếu hash và bằng chứng; phối hợp Hưng rà soát kết luận.
+
+Dương Tuấn Hưng tiếp nhận Orchestrator/handoff, kiểm chứng an toàn, benchmark/ablation và báo cáo kết quả. Hai người kiểm tra chéo phần việc; Hưng sẽ tự bổ sung commit/test và báo cáo cá nhân.
 
 ## 3. Đóng góp cụ thể
+
+Các mục đã triển khai dưới đây mô tả bản tích hợp đầu tiên `4d04f12` do tôi commit với hỗ trợ Codex, trước khi cập nhật phân công đủ 2 người. Trách nhiệm rà soát/tiếp nhận hiện tại theo mục 2 và `TEAM.md`.
 
 - Đã triển khai `src/lab8/shapes/workflow.py` với sự hỗ trợ của Codex: dùng tool đọc an toàn, tính quote bằng code, gửi quote đầy đủ cho host, trả `RunResult` và trace ở mọi nhánh kết thúc.
 - Đã bổ sung `src/tests/test_workflow_edges.py`: 10 ca kiểm thử, gồm claim/đơn không tồn tại, ticket chứa injection và dữ liệu nhạy cảm, approval không hợp lệ, quote thay đổi khi retry, và 3 điểm crash.
@@ -119,4 +127,4 @@ Kết quả mong đợi tại trạng thái code hiện tại: `lab8.smoke pass`
 
 - Tôi đã tự chạy lại test mặc định, gặp lỗi quyền thư mục tạm Windows, rồi làm theo hướng dẫn đổi `--basetemp` và xác nhận 92 passed. Tôi chưa tự xác nhận mức độ hiểu code của từng shape.
 - Phần triển khai, chạy test và tổng hợp số liệu hiện có sự hỗ trợ của Codex, được ghi rõ trong báo cáo.
-- Việc cần làm trước khi nộp: tự chạy thêm smoke/student, đối chiếu output và đọc lại ranh giới code/model, quote đầy đủ, approval, idempotency và handoff để giải thích được khi được hỏi.
+- Việc cần làm trước khi nộp: tự chạy thêm smoke/student, đối chiếu output và đọc lại phần Workflow/Single, ranh giới code/model, quote đầy đủ, approval và idempotency; phối hợp Hưng rà soát handoff, số đo và cập nhật bằng chứng sau commit của Hưng.

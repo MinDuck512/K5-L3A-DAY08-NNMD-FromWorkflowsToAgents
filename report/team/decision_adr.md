@@ -13,6 +13,12 @@
 
 Hash trên trỏ tới commit chứa code, test và bằng chứng đã chạy. Commit tài liệu kế tiếp ghi lại hash này trong ADR và các báo cáo, tránh tự tham chiếu hash của chính file đang được commit.
 
+## Phân công rà soát trong nhóm 2 người
+
+- Nguyễn Ngọc Minh Đức: phụ trách tích hợp, tổng hợp quyết định và kiểm tra luồng Workflow/Single cùng ranh giới code/model.
+- Dương Tuấn Hưng: phụ trách kiểm chứng Orchestrator/handoff, crash safety, benchmark/ablation và đối chiếu chi phí, độ dao động, giới hạn phép đo.
+- Hai người cùng rà soát điều kiện làm thay đổi quyết định. Các số liệu hiện có thuộc bản tích hợp do Đức commit với hỗ trợ Codex; chưa có xác nhận kiểm chứng riêng của Hưng. Cập nhật ADR nếu commit kỹ thuật sau này làm thay đổi code hoặc kết quả.
+
 ## Vì sao shape này
 
 Trên cùng 14 claim public × 5 seed, workflow, single và orchestrator đều đạt 70/70 trial, pass^5 = 1 và variance = 0. Workflow có cost/success thấp nhất: 27,86 VND so với single 33,37 và orchestrator 50,71. Swarm đạt 69/70, pass^5 = 13/14, cost/success 49,57 VND. Bài toán hiện có dữ kiện có cấu trúc và luật tính tiền xác định; workflow giải quyết được với 0 model call. Vì vậy chọn kiến trúc ít tự chủ nhất vẫn hoàn thành task. Đây là lựa chọn dựa trên public, chưa xác nhận gate hidden ≥ 0.75.

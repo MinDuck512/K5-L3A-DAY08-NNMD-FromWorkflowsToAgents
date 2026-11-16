@@ -25,6 +25,12 @@ Phần này nối tiếp phần mini research ở buổi lý thuyết (slide 62�
 | METHOD | Biến giữ cố định: model, tools, seed, corpus, giá, evaluator. Biến duy nhất được thay đổi: … | So orchestrator với orchestrator_no_draft. Dùng chung implementation trong lab8/shapes/orchestrator.py; chỉ đổi cờ draft_reply. Giữ MockLLM, tool/handoff, policy/ledger, toàn bộ public, seed 11,22,33,44,55, giá và evaluator; mỗi trial SQLite mới. Metadata shape/run_id tách riêng để không ghi đè trace. Đăng ký biến thể bằng --extra-shape, không sửa registry hay thước đo. |
 | FAILURE / METRIC | Một lỗi dự kiến và cách đo nó: pass rate, pass^5, variance, cost/success, leak, bypass | Đo pass rate, pass^5, seed variance, cost/success, model/tool calls. Test cặp kiểm status, quote, effect, audit và tool count không đổi; trace chỉ bớt event draft. Kiểm crash/resume của biến thể ở cả 3 điểm. Nếu mất kiểm duyệt hoặc đổi tiền thì bác bỏ giả thuyết, không sửa JSON để hợp kết quả. |
 
+## Phân công trong nhóm 2 người
+
+- Dương Tuấn Hưng phụ trách tiếp nhận và tự tái lập benchmark/ablation, đối chiếu biến cố định, số liệu và giới hạn; cập nhật phần kết quả sau khi có bằng chứng của mình.
+- Nguyễn Ngọc Minh Đức phụ trách tích hợp biến thể, rà soát thay đổi code, giữ hash/bằng chứng nhất quán với ADR và cùng kiểm tra kết luận.
+- Kết quả dưới đây đã có từ bản tích hợp `4d04f12`, do Codex chạy trong quá trình làm bài của Đức. Hưng chưa có kết quả tự chạy hoặc commit riêng được xác nhận.
+
 ## Kết quả ablation
 
 - Lệnh đã chạy (copy nguyên văn, trong `src/`):

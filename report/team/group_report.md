@@ -5,12 +5,14 @@ Tối đa 5 trang ngoài phụ lục. Số liệu lấy từ file trong `src/rep
 ## 1. Thông tin nhóm
 
 - Tên nhóm: NNMD — L3A
-- Thành viên: xem `TEAM.md`
+- Thành viên: Nguyễn Ngọc Minh Đức (`2A202603421`, GitHub `MinDuck512`) và Dương Tuấn Hưng (`03416`, GitHub `hunglun2711`); chi tiết trong `TEAM.md`
 - Commit chốt (trùng `report/team/decision_adr.md`): `4d04f12e3b7b425861c4968d61475ee5a36a744f` (code, test và bằng chứng; cập nhật hash bằng commit tài liệu kế tiếp)
 
 ## 2. Mục tiêu và cách tiếp cận
 
-Xử lý yêu cầu hoàn phí/bồi thường LogiX-VN theo luật nghiệp vụ, rồi chọn mức tự chủ thấp nhất vẫn đúng và an toàn. Triển khai lần lượt workflow, single và orchestrator; giữ swarm tham chiếu để đối chứng. Thành viên hiện khai báo: Nguyễn Ngọc Minh Đức, MSSV 2A202603421, với sự hỗ trợ của Codex. Thành viên đã tự chạy bộ test mặc định và xác nhận 92 passed sau khi đổi thư mục tạm pytest; benchmark và student bên dưới do Codex chạy, chi tiết tự kiểm tra ghi trong báo cáo cá nhân.
+Xử lý yêu cầu hoàn phí/bồi thường LogiX-VN theo luật nghiệp vụ, rồi chọn mức tự chủ thấp nhất vẫn đúng và an toàn. Bản tích hợp đầu tiên triển khai lần lượt workflow, single và orchestrator với hỗ trợ Codex; giữ swarm tham chiếu để đối chứng. Nhóm hiện có 2 người: Đức phụ trách Workflow/Single, tích hợp và ADR; Hưng phụ trách tiếp nhận Orchestrator/handoff, kiểm chứng an toàn và đánh giá benchmark/ablation. Hai người cùng rà soát báo cáo và kết luận.
+
+Các số liệu đang có được tạo từ bản tích hợp `4d04f12`, do Đức commit với sự hỗ trợ của Codex. Đức đã tự chạy test mặc định và xác nhận 92 passed sau khi đổi thư mục tạm pytest; benchmark và student bên dưới do Codex chạy. Hưng chưa có commit hoặc kết quả tự chạy được xác nhận; phần việc được phân công sẽ bổ sung bằng chứng qua commit của Hưng.
 
 Benchmark giữ nguyên 14 claim public, seed `11,22,33,44,55`, MockLLM, bảng giá, tool và evaluator chính thức; mỗi trial có SQLite mới. Tổng cộng 4 × 14 × 5 = 280 trial, `as_of` cố định 2026-11-15 theo config của lab.
 
@@ -58,11 +60,16 @@ Ablation R3 tắt riêng lượt draft cuối của Orchestrator, giữ nguyên 
 
 - Máy ban đầu có Python 3.14; bản Python standalone do uv tải bị Application Control chặn (`os error 4551`). Cài Python 3.13 chính thức riêng cho dự án, tạo `src/.venv` và cài requirements. Kiểm tra bằng `.\.venv\Scripts\python.exe --version` trong `src/` ra Python 3.13.17; không đổi chính sách Application Control. Đã dọn bản tải thử/cache không dùng.
 - Lọc pytest bằng `-k single` chọn cả hàm tên `test_public_single_run_cases` của shape khác, gây 60 lỗi orchestrator ở thời điểm chưa viết shape này. Đổi thành `-k "single and not workflow and not orchestrator and not swarm"` đạt 62/62; sau khi hoàn tất cả ba shape, chạy toàn bộ student đạt 248/248.
-- Thành viên tự chạy pytest trên Windows gặp `17 passed, 248 deselected, 75 errors`: tất cả 75 lỗi ở bước tạo `tmp_path`, do `PermissionError: [WinError 5]` khi đọc `C:\Users\ADMIN\AppData\Local\Temp\pytest-of-ADMIN`. Đổi sang thư mục tạm riêng bằng `.\.venv\Scripts\python.exe -m pytest -q --basetemp=.venv/pytest-local` trong `src/`; thành viên xác nhận `92 passed, 248 deselected in 2.24s`. Không sửa code nghiệp vụ, bộ chấm hay quyền thư mục Temp hệ thống. Thư mục tạm nằm trong `.venv/` đã gitignore.
+- Đức tự chạy pytest trên Windows gặp `17 passed, 248 deselected, 75 errors`: tất cả 75 lỗi ở bước tạo `tmp_path`, do `PermissionError: [WinError 5]` khi đọc `C:\Users\ADMIN\AppData\Local\Temp\pytest-of-ADMIN`. Đổi sang thư mục tạm riêng bằng `.\.venv\Scripts\python.exe -m pytest -q --basetemp=.venv/pytest-local` trong `src/`; Đức xác nhận `92 passed, 248 deselected in 2.24s`. Không sửa code nghiệp vụ, bộ chấm hay quyền thư mục Temp hệ thống. Thư mục tạm nằm trong `.venv/` đã gitignore.
 
 ## 6. Tổng hợp đóng góp
 
-Chi tiết đóng góp của từng thành viên nằm trong `TEAM.md` (bảng đóng góp) và báo cáo cá nhân `report/team/MSSV_HoTen.md`.
+| Thành viên | Phần phụ trách | Bằng chứng hiện có / cần bổ sung |
+| --- | --- | --- |
+| Nguyễn Ngọc Minh Đức | Workflow, Single; môi trường/Git, tích hợp; giải pháp và ADR | Commit bản tích hợp `4d04f12` có code/test/bằng chứng chung với hỗ trợ Codex; đã tự xác nhận 92 test mặc định pass |
+| Dương Tuấn Hưng | Orchestrator/handoff; approval/crash; benchmark, ablation, kết quả và giới hạn | Chưa có commit/test riêng và kết quả tự chạy; tiếp nhận phần được phân công, tự kiểm chứng và bổ sung bằng chứng sau |
+
+Chi tiết trong `TEAM.md` và [báo cáo của Đức](2A202603421_NguyenNgocMinhDuc.md). Hưng sẽ tự tạo báo cáo `03416_DuongTuanHung.md` và tự commit sau; hiện chưa có file này. Mỗi người cần commit kỹ thuật có ít nhất một test thêm/sửa và tự nộp link repo nhóm trên LMS theo yêu cầu bài lab.
 
 ## 7. Hạn chế và hướng cải thiện
 
@@ -70,7 +77,7 @@ Chi tiết đóng góp của từng thành viên nằm trong `TEAM.md` (bảng �
 - Cost là giá mô phỏng, latency là `unavailable`. `steps` là số event trace, không phải thời gian chạy; swarm ghi log ít hơn các shape khác nên không dùng số steps thấp để kết luận nhanh hơn.
 - Mỗi shape có prompt và số lượt model/tool khác nhau. Chênh lệch hiện tại phản ánh toàn bộ triển khai, chưa cô lập tác động topology. Public có ít case và hidden chưa được chấm.
 - Có thể đổi lựa chọn nếu task mới cần xử lý dữ liệu phi cấu trúc hoặc có việc độc lập để phân công, và phép đo mới cho thấy lợi ích bù được chi phí mà vẫn qua gate an toàn.
-- Ablation chỉ tắt một thành phần trong Orchestrator, không chứng minh tác động riêng của topology hoặc thay thế đánh giá chất lượng câu trả lời khách. Research card và commit code/bằng chứng đã chốt trong ADR. Thành viên đã xác nhận test mặc định; cần tiếp tục tự chạy student và củng cố phần giải thích code trước khi nộp.
+- Ablation chỉ tắt một thành phần trong Orchestrator, không chứng minh tác động riêng của topology hoặc thay thế đánh giá chất lượng câu trả lời khách. Research card và hash bản code/bằng chứng hiện có được ghi trong ADR. Đức đã xác nhận test mặc định; cả hai cần tự kiểm tra phần phụ trách và giải thích được code. Hưng cần bổ sung commit/test và báo cáo cá nhân trước khi nộp.
 
 ## 8. Tài liệu tham khảo
 
